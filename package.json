@@ -9,6 +9,8 @@
   "author": "Lucas Rodrigues",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^3.0.1",
+    "jshint": "^2.9.2",
     "mongoose": "^4.5.3"
   }
 }
