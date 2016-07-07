@@ -1,7 +1,6 @@
 'use strict';
 require('./db/config');
 const CRUD = require('./pokemon-controller');
-
 const query = {
             name:'Mongomon', 
             attack:{$gt:12}
