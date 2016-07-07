@@ -13,8 +13,7 @@ const squirtle ={
     type:"Água",
     attack:88,
     defense:12,
-    height:120
-}
+    height:120}
 
 const charmander ={
     name:'Charmander',
@@ -22,8 +21,7 @@ const charmander ={
     type:"Fogo",
     attack:90,
     defense:45,
-    height:120
-}
+    height:120}
 
 const charmillion = {
     name:'Charmillion',
@@ -31,13 +29,12 @@ const charmillion = {
     type:"Fogo",
     attack:222,
     defense:120,
-    height:430
-}
+    height:430}
 
 const options ={multi:true};
 
-
-CRUD.readByType(charmillion);
+CRUD.readByName(squirtle.name);
+//CRUD.readByType(charmillion);
 //CRUD.create(charmillion);
 //CRUD.read(data);
 //CRUD.update(data, mod, options);

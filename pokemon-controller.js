@@ -3,13 +3,13 @@
 require('./db/config');
 const mongoose = require('mongoose');
 const Schema = require('./schema');
-Schema.methods.findByType = function(pk) {
-    return this.model('Pokemon').find({type:this.type}, pk);
+
+Schema.methods.findByType = function(pk) {return this.model('Pokemon').find({type:this.type}, pk);};
+Schema.statics.search = function(name, cb){
+    return this.where('name',new RegExp(name,'i')).exec(cb);
 };
 
 const PokemonModel = require('./model')(Schema, 'Pokemon');
-
-
 
 var CRUD = {
     create:function(data){
@@ -31,6 +31,12 @@ var CRUD = {
                 return data.forEach((pokemon)=>console.log('pokemon', pokemon));
             })
     },
+    readByName:function(name){
+        PokemonModel.search(name, function(err,data){
+            if(err) return console.log('Erro: ',err);
+            return data.forEach((pokemon)=>console.log('Pokemon: ',pokemon));
+        });
+    },
     read:function(query){
         
         PokemonModel.find(query,function(err,data){
@@ -51,7 +57,7 @@ var CRUD = {
             if (err) return console.log('Erro: ',err);
             return console.log('Deletou: ',data);
         })
-    },
+    }
 };
 
 module.exports = CRUD;
