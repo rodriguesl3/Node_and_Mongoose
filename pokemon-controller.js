@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 require('./db/config');
 const mongoose = require('mongoose');
@@ -29,7 +29,7 @@ var CRUD = {
             .exec((err,data)=>{
                 if(err)return console.log('Erro: ',err);
                 return data.forEach((pokemon)=>console.log('pokemon', pokemon));
-            })
+            });
     },
     readByName:function(name){
         PokemonModel.search(name, function(err,data){
@@ -42,7 +42,7 @@ var CRUD = {
         PokemonModel.find(query,function(err,data){
             if(err)return console.log('Erro: ',err);
             return console.log('Buscou: ',data);
-        })
+        });
     },
     update:function(query, mod, options){
         var options = options || {multi:true};
@@ -56,7 +56,7 @@ var CRUD = {
         PokemonModel.remove(query, function(err,data){
             if (err) return console.log('Erro: ',err);
             return console.log('Deletou: ',data);
-        })
+        });
     }
 };
 
