@@ -12,7 +12,7 @@ const squirtle ={
     type:"Água",
     attack:88,
     defense:12,
-    height:120}
+    height:120};
 
 const charmander ={
     name:'Charmander',
@@ -20,7 +20,7 @@ const charmander ={
     type:"Fogo",
     attack:90,
     defense:45,
-    height:120}
+    height:120};
 
 const charmillion = {
     name:'Charmillion',
@@ -28,7 +28,7 @@ const charmillion = {
     type:"Fogo",
     attack:222,
     defense:120,
-    height:430}
+    height:430};
 
 const pokemon_test ={
     name:'Snorlax',
@@ -38,14 +38,14 @@ const pokemon_test ={
     defense:999,
     height:1200,
     email:'snorlaxpokemon.com'
-}
+};
 
 
 const options ={multi:true};
 
-//CRUD.readByName(squirtle.name);
+CRUD.readByName(squirtle.name);
 //CRUD.readByType(pokemon_test);
-CRUD.create(pokemon_test);
+//CRUD.create(pokemon_test);
 //CRUD.read(pokemon_test);
 //CRUD.update(data, mod, options);
 //CRUD.remove();

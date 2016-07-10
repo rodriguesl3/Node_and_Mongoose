@@ -9,6 +9,11 @@ Schema.statics.search = function(name, cb){
     return this.where('name',new RegExp(name,'i')).exec(cb);
 };
 
+Schema.pre('count', (next)=>{
+    console.log(next);
+    next();
+})
+
 const PokemonModel = require('./model')(Schema, 'Pokemon');
 
 var CRUD = {
@@ -57,7 +62,8 @@ var CRUD = {
             if (err) return console.log('Erro: ',err);
             return console.log('Deletou: ',data);
         });
-    }
+    },
+
 };
 
 module.exports = CRUD;
