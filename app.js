@@ -43,8 +43,8 @@ const pokemon_test ={
 const options ={multi:true};
 
 //CRUD.readByName(squirtle.name);
-//CRUD.readByType(charmillion);
+//CRUD.readByType(pokemon_test);
 CRUD.create(pokemon_test);
-//CRUD.read(data);
+//CRUD.read(pokemon_test);
 //CRUD.update(data, mod, options);
 //CRUD.remove();
