@@ -30,11 +30,21 @@ const charmillion = {
     defense:120,
     height:430}
 
+const pokemon_test ={
+    name:'Snorlax',
+    description:"Pokemon do tipo neutro",
+    type:"Neutro",
+    attack:999,
+    defense:999,
+    height:1200
+}
+
+
 const options ={multi:true};
 
-CRUD.readByName(squirtle.name);
+//CRUD.readByName(squirtle.name);
 //CRUD.readByType(charmillion);
-//CRUD.create(charmillion);
+CRUD.create(pokemon_test);
 //CRUD.read(data);
 //CRUD.update(data, mod, options);
 //CRUD.remove();
