@@ -12,7 +12,7 @@ Schema.statics.search = function(name, cb){
 Schema.pre('count', (next)=>{
     console.log(next);
     next();
-})
+});
 
 const PokemonModel = require('./model')(Schema, 'Pokemon');
 
