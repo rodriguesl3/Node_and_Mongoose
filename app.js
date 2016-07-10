@@ -36,7 +36,8 @@ const pokemon_test ={
     type:"Neutro",
     attack:999,
     defense:999,
-    height:1200
+    height:1200,
+    email:'snorlaxpokemon.com'
 }
 
 

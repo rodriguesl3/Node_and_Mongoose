@@ -8,6 +8,7 @@ const _type = require('./fields/type');
 const _attack = require('./fields/attack');
 const _defense = require('./fields/defense');
 const _height = require('./fields/height');
+const _email = require('./fields/email');
 const _created_at = require('./fields/created_at');
 
 var _schema = {
@@ -17,6 +18,7 @@ var _schema = {
     attack:_attack,
     defense:_defense,
     height:_height,
+    email:_email,
     created_at:_created_at
 };
 module.exports = new Schema(_schema);
