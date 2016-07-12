@@ -2,14 +2,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const _name = require('./fields/name');
+const _name = require('../fields/name');
 const _description = require('./fields/description');
-const _type = require('./fields/type');
-const _attack = require('./fields/attack');
-const _defense = require('./fields/defense');
-const _height = require('./fields/height');
-const _email = require('./fields/email');
-const _created_at = require('./fields/created_at');
+const _type = require('../fields/type');
+const _attack = require('../fields/attack');
+const _defense = require('../fields/defense');
+const _height = require('../fields/height');
+const _email = require('../fields/email');
+const _created_at = require('../fields/created_at');
 
 var _schema = {
     name:_name,
