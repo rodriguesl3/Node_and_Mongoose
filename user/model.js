@@ -15,26 +15,25 @@ const CRUD = {
            if(err) return console.log('Erro: ',err);
             return console.log('Encontrou: ', data);  
         });
-}
+    }
 ,   get:(query)=>{
-     User.findOne(query, (err,data)=>{
-        if(err) return console.log('Erro: ',err);
-        return console.log('Encontrou: ', data);  
-     });
-}
+        User.findOne(query, (err,data)=>{
+            if(err) return console.log('Erro: ',err);
+            return console.log('Encontrou: ', data);  
+        });
+    }
 ,   update:(query, mod)=>{
-     User.update(query, mod, (err,data)=>{
-        if(err) return console.log('Erro: ',err);
-        return console.log('Alterados: ', data);  
-     });
-}
+        User.update(query, mod, (err,data)=>{
+            if(err) return console.log('Erro: ',err);
+            return console.log('Alterados: ', data);  
+        });
+    }
 ,   delete:(query)=>{
-    User.remove(query, (err,data)=>{
-        if(err) return console.log('Erro: ',err);
-        return console.log('Removidos: ', data);  
-     });
-
-}
+        User.remove(query, (err,data)=>{
+            if(err) return console.log('Erro: ',err);
+            return console.log('Removidos: ', data);  
+        });
+    }
 };
 
 module.exports = CRUD;
