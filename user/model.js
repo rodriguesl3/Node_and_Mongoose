@@ -2,9 +2,6 @@
 
 const mongoose = require('mongoose');
 const Schema = require('./schema');
-
-
-
 const User = mongoose.model('User', Schema);
 const CRUD = {
     create:(obj)=>{
@@ -13,7 +10,18 @@ const CRUD = {
             return console.log('Inserido: ', data);
         });
     }
-,   read:()=>{}
+,   read:(query)=>{
+        User.find(query,(err,data)=>{
+           if(err) return console.log('Erro: ',err);
+            return console.log('Encontrou: ', data);  
+        });
+}
+,   get:(query)=>{
+     User.findOne(query, (err,data)=>{
+        if(err) return console.log('Erro: ',err);
+        return console.log('Encontrou: ', data);  
+     });
+}
 ,   update:()=>{}
 ,   delete:()=>{}
 };
