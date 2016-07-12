@@ -2,13 +2,26 @@
 
 const mongoose = require('mongoose');
 const Schema = require('./schema');
+const queryString = require('querystring');
+
 const User = mongoose.model('User', Schema);
 const CRUD = {
-    create:(obj)=>{
-        User.create(obj, (err,data)=>{
-            if(err) return console.log('Erro: ',err);
-            return console.log('Inserido: ', data);
-        });
+    create:(req, res)=>{
+       let queryData = '';
+       req.on('data',(data)=>{
+           queryData += data;
+       });
+
+       req.on('end',()=>{
+           const obj = queryString.parse(queryData);
+           User.create(obj,(err,data)=>{
+               if(err) return console.log('Erro:' ,err);
+               
+               res.writeHead(200, {'Content-Type':'application/json'});
+               return res.end(JSON.stringify(data));
+           });
+       });
+
     }
 ,   read:(query)=>{
         User.find(query,(err,data)=>{
