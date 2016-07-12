@@ -22,8 +22,19 @@ const CRUD = {
         return console.log('Encontrou: ', data);  
      });
 }
-,   update:()=>{}
-,   delete:()=>{}
+,   update:(query, mod)=>{
+     User.update(query, mod, (err,data)=>{
+        if(err) return console.log('Erro: ',err);
+        return console.log('Alterados: ', data);  
+     });
+}
+,   delete:(query)=>{
+    User.remove(query, (err,data)=>{
+        if(err) return console.log('Erro: ',err);
+        return console.log('Removidos: ', data);  
+     });
+
+}
 };
 
 module.exports = CRUD;
