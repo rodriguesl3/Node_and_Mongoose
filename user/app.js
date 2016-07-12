@@ -7,4 +7,5 @@ const _userData = {
 ,   email: 'lucas@teste.com'
 };
 
+
 Model.create(_userData);
