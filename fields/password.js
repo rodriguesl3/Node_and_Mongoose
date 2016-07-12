@@ -1,4 +1,3 @@
-
 const _validate = (v) => v.length > 3 && v.length < 10;
 
 const _field = {

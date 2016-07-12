@@ -2,8 +2,6 @@ const _get = (v) => v.toUpperCase();
 const _set = (v) => v.toLowerCase();
 const _validate = (v) => v.length > 3;
 
-
-
 const _field = {
     type:String
 ,   get: _get
@@ -12,9 +10,4 @@ const _field = {
 ,   required: true
 ,   index: true
 };
-
-
-
-
-
 module.exports = _field;
