@@ -23,7 +23,7 @@ http.createServer((req, res)=>{
         Controller.update(req, res);       
             break;
         case '/api/user/remove':
-            Controller.delete(req, res);
+            Controller.remove(req, res);
             break;
         default:
         res.end('Rota não encontrada');

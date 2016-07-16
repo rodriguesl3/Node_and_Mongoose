@@ -1,5 +1,4 @@
 'use strict';
-
 const mongoose = require('mongoose');
 const Schema = require('./schema');
 const queryString = require('querystring');
@@ -18,43 +17,54 @@ const getQuery = (path)=>{
     return queryString.parse(url_parts.query);
 };
 
-const CRUD = {
-    create:(req, res)=>{
-       let queryData = '';
-       req.on('data',(data)=>{
-           queryData += data;
-       });
+const create = (req, res)=>{
+    let queryData = '';
+    req.on('data',(data)=>{
+        queryData += data;
+    });
 
-       req.on('end',()=>{
-           const obj = queryString.parse(queryData);
-           User.create(obj,(err,data)=>callback(err,data,res));
-       });
+    req.on('end',()=>{
+        const obj = queryString.parse(queryData);
+        User.create(obj,(err,data)=>callback(err,data,res));
+    });
 
-    }
-,   read:(req,res)=>{
-       const query = getQuery(req.url);
-        User.find(query,(err,data)=>callback(err,data,res));
-    }
-,   get:(req,res)=>{
+};
+
+const read =(req,res)=>{
+    const query = getQuery(req.url);
+    User.find(query,(err,data)=>callback(err,data,res));
+};
+
+const get =(req,res)=>{
+    const query = getQuery(req.url);
+    User.findOne(query, (err,data)=>callback(err,data,res));
+};
+
+const update = (req, res)=>{
+    let queryData = '';        
+    req.on('data',(data)=>{
+        queryData += data;
+    });
+
+    req.on('end', ()=>{
+        const mod = queryString.parse(queryData);
         const query = getQuery(req.url);
-        User.findOne(query, (err,data)=>callback(err,data,res));
-    }
-,   update:(req, res)=>{
-        let queryData = '';        
-        req.on('data',(data)=>{
-            queryData += data;
-        });
+        User.update(query, mod, (err, data)=>callback(err,data,res));
+    }); 
+};
 
-        req.on('end', ()=>{
-            const mod = queryString.parse(queryData);
-            const query = getQuery(req.url);
-            User.update(query, mod, (err, data)=>callback(err,data,res));
-        }); 
-    }
-,   delete:(req, res)=>{
+const remove = (req, res) => {
         const query = getQuery(req.url);
         User.remove(query, (err,data)=>callback(err,data,res));
-    }
+};
+
+
+const CRUD = {
+    create
+,   read
+,   get
+,   update
+,   remove
 };
 
 module.exports = CRUD;
