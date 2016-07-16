@@ -8,18 +8,18 @@ const User = {
         // };
         Model.create(req, res);
     }
-,   read:   ()=>{
+,   read:   (req,res)=>{
         let query = {name: /Lucas Rodrigues/i};
-        Model.read(query);
+        Model.read(req,res);
     }
-,   update: ()=>{
-        let query = {name: /Lucas Rodrigues/i};
-        const mod = {name: 'Rodrigues Souza'};
-        Model.update(query,mod);
+,   update: (req, res)=>{
+        // let query = {name: /Lucas Rodrigues/i};
+        // const mod = {name: 'Rodrigues Souza'};
+        Model.update(req, res);
     }
-,   delete: ()=>{
-        let query = {name: /Lucas Rodrigues/i};
-        Model.delete(query);
+,   delete: (req, res)=>{
+        //let query = {name: /Lucas Rodrigues/i};
+        Model.delete(req, res);
     }
 };
 
