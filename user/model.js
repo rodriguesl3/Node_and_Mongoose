@@ -13,6 +13,10 @@ const callback = (err,data,res)=>{
         res.writeHead(200, {'Content-Type':'application/json'});
         return res.end(JSON.stringify(data));
 };
+const getQuery = (path)=>{
+    const url_parts = url.parse(path);
+    return queryString.parse(url_parts.query);
+};
 
 const CRUD = {
     create:(req, res)=>{
@@ -28,13 +32,11 @@ const CRUD = {
 
     }
 ,   read:(req,res)=>{
-        const url_parts = url.parse(req.url);
-        const query = queryString.parse(url_parts.query);
+       const query = getQuery(req.url);
         User.find(query,(err,data)=>callback(err,data,res));
     }
 ,   get:(req,res)=>{
-        const url_parts = url.parse(req.url);
-        const query = queryString.parse(url_parts.query);
+        const query = getQuery(req.url);
         User.findOne(query, (err,data)=>callback(err,data,res));
     }
 ,   update:(req, res)=>{
@@ -45,21 +47,14 @@ const CRUD = {
 
         req.on('end', ()=>{
             const mod = queryString.parse(queryData);
-            const url_parts = url.parse(req.url);
-            const query = queryString.parse(url_parts.query);
+            const query = getQuery(req.url);
             User.update(query, mod, (err, data)=>callback(err,data,res));
         }); 
     }
 ,   delete:(req, res)=>{
-        const url_parts = url.parse(req.url);
-        const query = queryString.parse(url_parts.query);
+        const query = getQuery(req.url);
         User.remove(query, (err,data)=>callback(err,data,res));
     }
 };
 
 module.exports = CRUD;
-
-
-
-// const u = new User(_userData);
-// console.log(u.validateSync());
