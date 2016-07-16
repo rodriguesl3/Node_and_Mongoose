@@ -15,7 +15,10 @@ const CRUD = {
        req.on('end',()=>{
            const obj = queryString.parse(queryData);
            User.create(obj,(err,data)=>{
-               if(err) return console.log('Erro:' ,err);
+               if(err){
+                    res.writeHead(500, {'Content-Type':'application/json'});
+                    return res.end(JSON.stringify(err));
+               } 
                
                res.writeHead(200, {'Content-Type':'application/json'});
                return res.end(JSON.stringify(data));
@@ -57,10 +60,15 @@ const CRUD = {
             });
         }); 
     }
-,   delete:(query)=>{
+,   delete:(req, res)=>{
+        const url_parts = url.parse(req.url);
+        const query = queryString.parse(url_parts.query);
+
         User.remove(query, (err,data)=>{
             if(err) return console.log('Erro: ',err);
-            return console.log('Removidos: ', data);  
+
+            res.writeHead(200, {'Content-Type':'application/json'});
+            return res.end(JSON.stringify(data));  
         });
     }
 };

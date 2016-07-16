@@ -15,15 +15,13 @@ http.createServer((req, res)=>{
     
         case '/api/user/read':
         Controller.read(req,res);
-        msg='Usuário Encontrado!!!';
+       
             break;
         case '/api/user/update':
-        Controller.update(req, res);
-        res.end('Usuário Removido!!!');
+        Controller.update(req, res);       
             break;
         case '/api/user/remove':
             Controller.delete(req, res);
-            res.end('Usuário Removido!!!');
             break;
         default:
         res.end('Rota não encontrada');
