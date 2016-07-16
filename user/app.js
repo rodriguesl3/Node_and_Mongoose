@@ -14,8 +14,10 @@ http.createServer((req, res)=>{
             break;
     
         case '/api/user/read':
-        Controller.read(req,res);
-       
+            Controller.read(req,res);
+            break;
+        case '/api/user/get':
+            Controller.get(req,res);
             break;
         case '/api/user/update':
         Controller.update(req, res);       
