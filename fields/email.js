@@ -6,7 +6,7 @@ const _field ={
     type: String
 // ,   get: _get
 ,   set: _set
-,   validate: [_validate, 'Informe um email válido']
+,   validate: [_validate, '{{VALUE}} não é valido. Informe um email válido']
 ,   required: true
 
 };
