@@ -1,32 +1,33 @@
 'use strict';
 const Blog = require('./schema-blog-getter');
-const expect = require('chai').expect;
+ const expect = require('chai').expect;
+//const assert = require('assert');
 
 describe('BlogPostSchema',()=>{
     const _title = 'nodejs power of c++ of v8';
-
-    before(done=>{
+    
+     before((done)=>{
         Blog.create({
             title:_title
         }).then(blog=>{
-            console.log(blog);
+            
             done();
         });
     });
-    after(done=>{
+    after((done)=>{
         Blog.remove({title:_title})
-            .then(deleted=>{
-                console.log(deleted.result);
+            .then((deleted)=>{
+               
                 done();
             });
     });
 
-    describe('testing geetter',()=>{
+    describe('testing getter',()=>{
         it('title is show with UpperCase',()=>{
-            Blog.findOne({title:_title})
-                .then(blog=>{
-                    exepect(blog.title).to.be.equal(_title.UpperCase());
-                });
+           return Blog.findOne({title:_title}).then((blog)=>{
+                
+                expect(blog.title).to.be.equal(_title.toUpperCase());
+            });
         });
     });
 });
