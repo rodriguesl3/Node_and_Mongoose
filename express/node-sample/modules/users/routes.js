@@ -15,7 +15,7 @@ router.post('/pokemon',(req,res)=>{
  const body = req.body;
  console.log(body);
  var pokemon = new model(body);
-    pokemon.save(body,(err,data)=>{
+    pokemon.save((err,data)=>{
         callback(err,data,res);
     });
 });
