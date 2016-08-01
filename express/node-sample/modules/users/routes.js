@@ -2,24 +2,26 @@
 
 const express = require('express');
 const router = express.Router();
+const model = require('./model');
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const _schema = {
-    name: String
-};
-const pokemonSchema = new Schema(_schema);
-const model = mongoose.model('Pokemon',pokemonSchema);
 
-const query = {};
 const callback = (err,data,res)=>{
  if(err) return console.log('ERRO: ',err);
  console.log(data);
  return res.json(data);
 };
 
+router.post('/pokemon',(req,res)=>{
+ const body = req.body;
+ console.log(body);
+ var pokemon = new model(body);
+    pokemon.save(body,(err,data)=>{
+        callback(err,data,res);
+    });
+});
 
 router.get('/pokemon',(req,res)=>{
+    const query = {};
     model.find(query,(err, data)=>{
         callback(err,data,res);
     });
@@ -30,12 +32,4 @@ router.get('/',(req,res)=>{
 router.get('/json',(req,res)=>{
     res.json({title: 'Lucas Rodrigues'});
 });
-
-
-
-
-
-
-
-
 module.exports = router;
