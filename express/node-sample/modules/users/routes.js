@@ -3,8 +3,6 @@
 const express = require('express');
 const router = express.Router();
 const model = require('./model');
-
-
 const callback = (err,data,res)=>{
  if(err) return console.log('ERRO: ',err);
  console.log(data);
