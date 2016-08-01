@@ -4,7 +4,7 @@ const dbUri = 'mongodb://localhost/crud-mongoose';
 mongoose.connect(dbUri);
 
 mongoose.connection.on('connected',function(){
-    console.log('Mongoose default connection connected to '+ dbURI);
+    console.log('Mongoose default connection connected to '+ dbUri);
 });
 
 mongoose.connection.on('error',function(err){

@@ -14,6 +14,7 @@ const model = mongoose.model('Pokemon',pokemonSchema);
 const query = {};
 const callback = (err,data,res)=>{
  if(err) return console.log('ERRO: ',err);
+ console.log(data);
  return res.json(data);
 };
 
@@ -22,9 +23,7 @@ router.get('/pokemon',(req,res)=>{
     model.find(query,(err, data)=>{
         callback(err,data,res);
     });
-     
-
-})
+});
 router.get('/',(req,res)=>{
     res.render('index',{title: 'Lucas Rodrigues'});
 });
